@@ -1,0 +1,260 @@
+* {
+    /* This is not inheritance, but a universal style
+    for all allowed elements. */
+    box-sizing: border-box;
+}
+
+/* Selector (element), targetting the section DOM */
+body {
+    /* font-related styles are passed down to any of
+    child elements */
+    font-family: 'Montserrat', sans-serif;
+    /* Inheritance is the concept for passing styles down
+    without explicitly selecting an element.
+    */
+    /* Special thing: Body has always a defalut margin set by browsers */
+    margin: 0 auto;
+}
+
+/* html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+} */
+
+#product-overview {
+    background: url('../images/freedom.jpg');
+    /* padding: 20px;
+    /* Combines values of multiple properties in a single
+    property (the shorthand property). */
+    /* border: 5px solid #333; */
+    /* this margin is to show the concept of margin collapsing between this and the section-title h1 
+    margin: 20px; */
+    width: 100%; /* Redundant, but not after margin is set */
+    /*width: 50%;  50% width of the surrounding container, which is <main> element, whose surrounding container is <body> element, which in turn is <html>. The hierarchy goes like this... 
+    Since all parent (ancestor) elements have a full 100%
+    width, so a width of 50% in <section> element, will
+    shrink its size to 50% of 100 which is 50% only. */
+    /* width: 700px; */
+    /* Tricky part here... */
+    /* Since its parent, which is main element, dynamically grows according to its content.
+    The analogy is like,
+    main element, parent of #product-overview section has grown as big as it needs to be, in which included is the #product-overview section's required height which is actually 100%.
+    So, if specificallly stating #product-overview section's height as 100%, it's redundant, unless, all of main element's parents/ancestors height being set to 100%, then upon setting height as 100% in main element, the height of 100% in #product-overview section
+    will take effect!
+
+    height: 100%;
+     */
+    /* By default, we set the height and width of the 
+    content, padding and border is not included in the 
+    calculation; and margin as we know, it surrounds
+    an element and is not part of it. - This is
+    the content-box value (by default) set to box-sizing property.
+    By setting box-sizing property to border-box, we will include the border and padding calculation into account in height and width calculation. */
+    height: 528px;
+    padding: 10px;
+    /* border: 5px solid #333;
+    margin: 10px; */
+    /* Add this in universal selector element, the rare cases which is better!. Setting it to body/html element, using inheritance will not work, since body has
+    its own box-sizing which always dominates our box-sizing. */
+    /* box-sizing: border-box; */
+}
+
+#product-overview h1 {
+    color: #fff;
+    font-family: 'Anton', sans-serif;
+}
+
+/*  Styling the plans section  */
+
+.section-title {
+    text-align: center;
+    color: #2ddf5c;
+    /* font-family: inherit; - This increases the specificity of inheritance
+    as it's being used here(class selectors).
+    Now, using the value inherit in a property means
+    it will visit its parent element and grab the value
+    from it, like using class selector to inc. the 
+    specificity of the font-family being used in parent
+    i.e. body. */
+    /*
+    This is not the best way though since we'll need to use the same property everywhere.
+    */
+    /* font-family: inherit; */
+    /* The best way is to use a combinator! */
+}
+
+.plan {
+    background: #d5ffdc;
+    text-align: center;
+    padding: 16px;
+    margin: 8px;
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+}
+
+.plan--highlighted {
+    background: #19b84c;
+    color: #fff;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.plan__annotation {
+    background: #fff;
+    color: #19b84c;
+    padding: 8px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.plan__title {
+    color: #0e4f1f;
+}
+
+.plan__price {
+    color: #858585;
+}
+
+.plan--highlighted .plan__title {
+    color: white;
+}
+
+.plan--highlighted .plan__price {
+    color: #0e4f1f;
+}
+
+.plan__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.plan__feature {
+    margin: 8px 0;
+}
+
+/* Styling the core features.  */
+.key-features {
+    background: #ff1b68;
+    margin-top: 80px;
+    padding: 16px;
+}
+
+.key-features > .section-title {
+    color: #fff;
+    margin: 32px;
+}
+
+.key-feature__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.key-feature {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+
+.key-feature__image {
+    background: #ffcede;
+    width: 128px;
+    height: 128px;
+    border: 2px solid #424242;
+    /* Circle */
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.key-feature__description {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
+/* Selectors: Elements, Classes, Universal, Id, attributes  
+
+Element: <element-name>{...}
+Classes: .<class-name> {...}
+Universal: * {...}
+Id: #<id-name> {...}
+Attribute: [attribute-name] {...}
+*/
+
+.main-nav {
+    display: inline-block;
+    /* text-align : right gets applied to <ul> due to
+    inheritance, but it doesn't have an effect, since
+    list items are inline-block elements which doesn't
+    take the full available width, as it needs only space its content actually needs. Now, to use the text-align feature, a workaround is to use it with a width property. So, follow the below styles... */
+    /* Strange inline-block behavior, REMEMBER IT ONLY HAPPENS FOR INLINE-BLOCK ELEMENTS, AND REASON IS CODE EDITOR FORMATTING.. So, for now a hacky solution is to add more pixels with the div size pixel to remove the code editor blankspace (nearly 5/24px, it depends on the font-size).*/
+    text-align: right;
+    width: calc(100% - 50px - 24px);
+    vertical-align: middle;
+}
+
+.main-nav__items {
+    /* <ul> / <li> have a default padding of 40px along wiht margin top and bottom with bullet points. To remove this, follow below styles. */
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav__item {
+    /* inline-block mixes the behavior of both inline and block level elements. It is a great start to position
+    elements next to each other, but flexbox offers much
+    better ways.*/
+    display: inline-block;
+    margin: 0 16px;
+}
+
+/*  *** this one: their order should matter */
+.main-nav__item a {
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+/* pseudo element is for styling specific part of element. */
+/* .main-nav__item a::after {
+    content: ' (Link)';
+    color: red;
+} */
+
+/* pseudo-classes is for a special state of element (event) like visited, active, hover, etc.*/
+/* grouping element styles */
+.main-nav__item a:hover,
+.main-nav__item a:active {
+    color: white;
+    border-bottom: 5px solid #fff;
+}
+/* ***: This one: order should matter (check at line 147) */
+.main-nav__item--cta a {
+    color: white;
+    background: #ff1b68;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+    color: #ff1b68;
+    background: white;
+    border: none;
+}
+/* pseudo element is for styling specific part of element. */
+/* p::first-letter {
+    color: red;
+    font-size: 22px;
+} */

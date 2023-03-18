@@ -1,0 +1,39 @@
+body {
+    font-family: sans-serif;
+}
+
+nav {
+    margin-bottom: 16px;
+    background: #fa923f;
+    padding: 8px 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    margin: 0px 10px;
+}
+
+/* Just an Id concept, simply avoiding using it. Apply styles to th anchor tag whoch has the class active.
+*/
+a.active {
+    color: #521751;
+}
+
+/* This will select any anchor tag which does not have an .active class
+Use positive scenarios only, :not() liek selectors easily gets compilcated for newcomers. */
+a:not(.active) {
+    color: blue;
+}
+
+.main-section {
+    height: 800px;
+    border: 1px solid #ccc; /* !important;  Never use important, except for some special edge cases.*/
+    padding: 16px;
+}
+
+/* between classes the overwrite happens since classes have same specificity over another one.
+So, the ones that comes after another, that one gets applied. */
+.highlighted {
+    border: 2px solid #fa923f;
+}

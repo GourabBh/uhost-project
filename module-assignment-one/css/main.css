@@ -1,0 +1,28 @@
+body {
+    font-family: sans-serif;
+}
+
+#assignment-instructions {
+    color: #64de64;
+}
+
+.second-point-codes {
+    color: #2ddf56;
+}
+
+code {
+    font-family: monospace;
+    color: #ff1b68;
+}
+
+/* This means that CSS parser should find the first ever <li> element in page, and will apply the tilde combinator to all <li>
+ elements coming after it at same level */
+li ~ li {
+    background-color: #333;
+    color: #fff;
+}
+
+ol > li {
+    background-color: #333;
+    color: #fff;
+}
